@@ -6,6 +6,8 @@ namespace WeatherArena
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddHttpClient<ApiService>();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 

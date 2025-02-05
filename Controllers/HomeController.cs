@@ -6,17 +6,30 @@ namespace WeatherArena.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApiService _apiService;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApiService apiService)
         {
             _logger = logger;
+            _apiService = apiService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var lat = 37.8136;
+            var lon = 144.9631;
+            var key = "ea3f09569a6ba8de648ced6aa4a5bbba";
+            string url = $"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=metric";
+
+            //https://api.openweathermap.org/data/2.5/weather?lat=37.8136&lon=144.9631&appid=ea3f09569a6ba8de648ced6aa4a5bbba&units=metric
+
+            var weatherData = await _apiService.GetWeatherData(url);
+
+            return View(weatherData);
         }
+
 
         public IActionResult Privacy()
         {
