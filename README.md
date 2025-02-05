@@ -19,11 +19,15 @@ Please make sure to update tests as appropriate.
 
 ## TODO: 
 
-[] - Set up UI
-[] - Set up Weather API
-- [] BOM
-- [] OpenWeather
-- [] ????
-[] - Unit Test Weather API
-[] - Set up AUTH? 
-[] - Set up DB
+- [ ] Set up UI
+- [x] handle API envs
+- [ ] Compile Weather Cards
+- [] Set up Weather API
+	- [ ] BOM
+	- [x] OpenWeather
+- [ ] ????
+- [ ] set up daily rotation of weather
+- [ ] Set up voting
+- [ ] Set up AUTH? 
+- [ ] Set up DB
+- [ ] Unit Test Weather API

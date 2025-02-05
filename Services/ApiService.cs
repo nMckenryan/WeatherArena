@@ -14,22 +14,30 @@ public class ApiService
 
     public async Task<ForecastModel> GetWeatherData(string url)
     {
-        var response = await _httpClient.GetAsync(url);
-        if (response.IsSuccessStatusCode)
+        try
         {
+            var response = await _httpClient.GetAsync(url);
+
+            response.EnsureSuccessStatusCode();
+
             var weatherData = await response.Content.ReadFromJsonAsync<ForecastModel>();
-            if (weatherData != null)
-            {
-                return weatherData;
-            }
-            else
-            {
-                return new ForecastModel();
-            }
+            return weatherData;
         }
-        else
+        catch (HttpRequestException ex)
         {
-            return new ForecastModel();
+            Console.WriteLine($"HTTP request error: {ex.Message}");
+            throw;
+        }
+        catch (JsonException ex)
+        {
+            Console.WriteLine($"JSON parsing error: {ex.Message}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            // handle any other exceptions
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
         }
     }
 }
