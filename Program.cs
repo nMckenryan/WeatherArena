@@ -8,7 +8,6 @@ namespace WeatherArena
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddServerSideBlazor();
 
             var app = builder.Build();
 
@@ -30,7 +29,6 @@ namespace WeatherArena
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapBlazorHub();
 
             app.Run();
         }
