@@ -6,6 +6,25 @@
 
 <h2>Weather Forecast</h2>
 
-<table class="table">
-    <p>@Model.wind.gust.ToString()</p>
-</table>
+<div class="container">
+    <div class="row align-items-start  gap-3">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">OpenWeather</h5>
+            <p class="card-text">Temperature: @Model.main.temp</p>
+            <p class="card-text">Feels like: @Model.main.feels_like</p>
+            <p class="card-text">Weather: @Model.weather[0].description</p>
+        </div>
+    </div>
+
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">OpenWeather</h5>
+        <p class="card-text">Temperature: @Model.main.temp</p>
+        <p class="card-text">Feels like: @Model.main.feels_like</p>
+        <p class="card-text">Weather: @Model.weather[0].description</p>
+    </div>
+</div>
+</div>
+</div>
